@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { GameProvider } from "@/hooks/useGameColorContext";
 import { Header } from "@/components/ui/Header";
+import { Footer } from "@/components/ui/footer";
 
 const plus_Jakarta_Sans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -19,10 +20,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={plus_Jakarta_Sans.className}>
-        <GameProvider>
-          <Header />
-          {children}
-        </GameProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

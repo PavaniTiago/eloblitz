@@ -10,6 +10,10 @@ const config = {
 	],
   prefix: "",
   theme: {
+    colors: {
+      lol: "#2168D4",
+      valorant: "#D45721",
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -19,8 +23,6 @@ const config = {
     },
     extend: {
       colors: {
-        lol: "var(--lol)",
-        valorant: "var(--valorant)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
