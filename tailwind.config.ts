@@ -11,6 +11,7 @@ const config = {
   prefix: "",
   theme: {
     colors: {
+      current: "background-color: current;",
       lol: "#2168D4",
       valorant: "#D45721",
     },

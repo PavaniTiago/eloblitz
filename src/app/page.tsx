@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <main className="flex relative min-h-screen w-full flex-col items-center bg-secondary text-primary overflow-hidden">
-      <video className="w-full h-screen object-cover brightness-[25%] relative z-10" autoPlay muted loop>
+      <video className="w-full h-screen object-cover brightness-[25%] relative z-10" autoPlay muted loop playsInline webkit-playsinline>
         <source src="/video.mp4" type="video/mp4"/>
       </video>
       <section className="h-screen flex flex-col items-center justify-center absolute z-20">
