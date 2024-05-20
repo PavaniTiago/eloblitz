@@ -1,244 +1,116 @@
-export const Ranks = {
-    Challenger: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+import { RankData } from "@/types/rank-interface";
+
+export const Ranks: RankData[] = [
+  {
+    rankName: "Iron",
+    details: {
+      backgroundColor: "#5B443F",
+      backgroundImage: "/elo-iron.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    GrandMaster: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Bronze",
+    details: {
+      backgroundColor: "#794A36",
+      backgroundImage: "/elo-bronze.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Master: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Silver",
+    details: {
+      backgroundColor: "#556B80",
+      backgroundImage: "/elo-silver.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Diamond: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Gold",
+    details: {
+      backgroundColor: "#C27C34",
+      backgroundImage: "/elo-gold.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Emerald: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Platinum",
+    details: {
+      backgroundColor: "#2F8E94",
+      backgroundImage: "/elo-plat.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Platinum: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Emerald",
+    details: {
+      backgroundColor: "#009F61",
+      backgroundImage: "/elo-emerald.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Gold: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Diamond",
+    details: {
+      backgroundColor: "#3356A6",
+      backgroundImage: "/elo-diamond.svg",
+      division: {
+        1: { price: 10, name: "IV" },
+        2: { price: 10, name: "III" },
+        3: { price: 10, name: "II" },
+        4: { price: 10, name: "I" },
+      },
     },
-    Silver: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Master",
+    details: {
+      backgroundColor: "#8449CE",
+      backgroundImage: "/elo-master.svg",
     },
-    Bronze: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "GrandMaster",
+    details: {
+      backgroundColor: "#702523",
+      backgroundImage: "/elo-grandmaster.svg",
     },
-    Iron: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
+  },
+  {
+    rankName: "Challenger",
+    details: {
+      backgroundColor: "#053477",
+      backgroundImage: "/elo-challenger.svg",
     },
-    Unranked: {
-        "background-color": "#",
-        "background-image": "/.webp",
-        division: {
-            1: {
-                price: 10,
-                name: "I"
-            },
-            2: {
-                price: 10,
-                name: "II"
-            },
-            3: {
-                price: 10,
-                name: "III"
-            },
-            4: {
-                price: 10,
-                name: "IV"
-            },
-        }
-    },
-}
+  },
+];

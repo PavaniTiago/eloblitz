@@ -1,24 +1,24 @@
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
+import Image, { StaticImageData } from "next/image";
 import { RankData, RankDetails } from "@/types/rank-interface";
-import Image from "next/image"
-import { useState } from "react";
 
-interface EloDialogProps {
+
+interface DesirebleEloDialogProps {
   rankData: RankData[];
   onRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
   image: string;
 }
 
-export function EloDialog({ rankData, onRankSelect, image }: EloDialogProps) {
+export function DesirebleEloDialog({ rankData, onRankSelect, image }: DesirebleEloDialogProps) {
   const [selectedRank, setSelectedRank] = useState<{ rankName: string; details: RankDetails } | null>(null);
   const [selectedDivision, setSelectedDivision] = useState<{ name: string; price: number } | null>(null);
 

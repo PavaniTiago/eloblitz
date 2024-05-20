@@ -6,21 +6,31 @@ import { Minus, Plus } from "lucide-react"
 
 interface Md5Props {
     color: string;
+    onSelectCount: (count: number) => void;
+    bgColor: string;
 }
 
-export function Md5Card({ color }: Md5Props) {
+export function Md5Card({ color, bgColor, onSelectCount }: Md5Props) {
     const [count, setCount] = useState<number>(5);
 
     const decrement = () => {
-        if (count > 1) setCount(count - 1);
+        if (count > 1) {setCount(count - 1); onSelectCount(count - 1)};
     };
 
     const increment = () => {
-        if (count < 5) setCount(count + 1);
+        if (count < 5) {setCount(count + 1); onSelectCount(count + 1)};
     };
 
+    function isValidHexColor(color: string): boolean {
+        return /^#[0-9A-F]{6}$/i.test(color);
+    }
+
+    const backgroundColor = bgColor && isValidHexColor(bgColor)
+    ? bgColor
+    : "#6B4230";
+
     return (
-        <div className="flex flex-col items-center pt-20 h-[32rem] w-[20rem] bg-[#7A4B36] rounded-xl">
+        <div className={`flex flex-col items-center pt-20 h-[32rem] w-[20rem] rounded-xl`} style={{backgroundColor: backgroundColor}}>
             <div className="flex items-center justify-center bg-[#000]/25 w-32 h-32 rounded-full p-6">
                 <span className="text-5xl text-primary font-extrabold">{count}</span>
             </div>

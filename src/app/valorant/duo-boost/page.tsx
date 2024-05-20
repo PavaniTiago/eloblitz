@@ -1,14 +1,47 @@
+"use client"
+
 import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
 import { DesireblaCard } from "@/components/ui/desirableCard";
+import { Ranks } from "@/lib/ranksValorant";
+import { RankDetails } from "@/types/rank-interface";
+import { useState } from "react";
 
-export default function EloBoost(){
+interface EloDialogProps {
+    onActualRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
+    onDesirebleRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
+}
+
+export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialogProps){
+
+    const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
+    const [desirableRank, setDesirableRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
+
+    const handleActualRankSelect = (rank: { rankName: string; details: RankDetails; division: { name: string; price: number } }) => {
+        setActualRank(rank);
+        onActualRankSelect(rank);
+    };
+
+    const handleDesirableRankSelect = (rank: { rankName: string; details: RankDetails; division: { name: string; price: number } }) => {
+        setDesirableRank(rank);
+        onDesirebleRankSelect(rank);
+    };
+
+    const isRankValid = () => {
+        if (!actualRank || !desirableRank) return true;
+        const rankOrder = ["Iron", "Bronze", "Silver", "Gold", "Platinum","Emerald", "Diamond", "Master", "GrandMaster", "Challenger"];
+        const actualRankIndex = rankOrder.indexOf(actualRank.rankName);
+        const desirableRankIndex = rankOrder.indexOf(desirableRank.rankName);
+
+        return actualRankIndex <= desirableRankIndex;
+    };
+
     return (
         <main className="flex min-h-screen w-full flex-col justify-center items-center bg-secondary text-primary pt-40">
             <section className="flex w-full max-w-7xl items-center justify-between">
                 <div className="flex items-center gap-8 z-10">
-                    <ActualCard />
-                    <DesireblaCard />
+                    <ActualCard gamerank={Ranks as any} onActualRankSelect={handleActualRankSelect as any} />
+                    <DesireblaCard gameRank={Ranks as any} onDesirebleRankSelect={handleDesirableRankSelect as any} />
                 </div>
                 <div className="flex flex-col gap-4 relative">
                     <div className="w-64 h-40 rounded-full absolute mx-auto top-10">
@@ -16,11 +49,17 @@ export default function EloBoost(){
                     </div>
                     <h2 className="text-primary text-5xl font-extrabold pt-12 z-10 max-w-lg text-start">BRONZE IV ao PLATINA III</h2>
                     <div className="flex items-center gap-4 z-10">
-                        <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
-                        <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
-                        <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">25% off</span>
+                        {isRankValid() ? (
+                            <>
+                                <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
+                                <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
+                                <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">25% off</span>
+                            </>
+                        ) : (
+                            <p className="text-primary text-2xl font-semibold text-center z-10">Selecione um elo maior para contratar o serviço</p>
+                        )}
                     </div>
-                    <Button className="bg-valorant text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">Contratar (R$ 126,00)</Button>
+                    <Button className="bg-lol text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : "Contratar (R$ 126,00)"}`}</Button>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start justify-start border-t border-primary-foreground mt-20">
