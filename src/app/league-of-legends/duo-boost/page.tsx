@@ -3,7 +3,7 @@
 import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
 import { DesireblaCard } from "@/components/ui/desirableCard";
-import { Ranks } from "@/lib/ranks";
+import { Ranks } from "@/lib/duo-boost/ranks";
 import { RankDetails } from "@/types/rank-interface";
 import { useState } from "react";
 
@@ -47,14 +47,14 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
                         <div className="w-full h-full bg-lol blur-[10rem]"></div>
                     </div>
                     <h2 className="text-primary text-5xl font-extrabold pt-12 z-10 max-w-lg text-start">
-                        {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division.name} AO ${desirableRank.rankName} ${desirableRank.division ? desirableRank.division.name : ""}` : "BRONZE IV AO PLATINA IV"}
+                        {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division.name ? actualRank.division.name : ""} AO ${desirableRank.rankName} ${desirableRank.division ? desirableRank.division.name : ""}` : "BRONZE IV AO PLATINA IV"}
                     </h2>
                     <div className="flex items-center gap-4 z-10">
                         {isRankValid() ? (
                             <>
                                 <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
                                 <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
-                                <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">25% off</span>
+                                <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">30% off</span>
                             </>
                         ) : (
                             <p className="text-primary text-2xl font-semibold text-center z-10">Selecione um elo maior para contratar o serviço</p>

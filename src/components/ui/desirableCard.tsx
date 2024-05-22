@@ -1,6 +1,5 @@
 "use client"
 
-import { Ranks } from "@/lib/ranks";
 import { DesirebleEloDialog } from "./desirebleEloDialog";
 import { useState } from "react";
 import { RankDetails } from "@/types/rank-interface";
@@ -41,7 +40,7 @@ export function DesireblaCard({ onDesirebleRankSelect, gameRank }: DesireblaCard
             <DesirebleEloDialog image={selectedRank?.details.backgroundImage as string} onRankSelect={handleSelect as any} rankData={gameRank}/>
             <span className="text-xl font-medium text-primary">Selecione seu Elo Atual</span>
             {selectedRank && (
-                <h3 className="text-3xl font-semibold uppercase">{`${selectedRank.rankName} ${selectedDivision ? `${selectedDivision.name}` : ""}`}</h3>
+                <h3 className="text-3xl font-extrabold uppercase">{`${selectedRank.rankName} ${selectedDivision ? `${selectedDivision.name}` : ""}`}</h3>
             )}
         </div>
     )

@@ -31,7 +31,7 @@ export function GameCard({ description, icon, title, color }: GameCardProps) {
         <CardDescription className="text-primary-foreground">{description}</CardDescription>
       </CardContent>
       <CardFooter className="absolute bottom-0">
-        <Button className={`${color == "valorant" ? "bg-valorant" : "bg-lol"} text-md font-normal text-primary w-64 py-6`}>Adquirir</Button>
+        <Button className={`${color == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"} transition-all text-md hover:bg font-normal text-primary w-64 py-6`}>Adquirir</Button>
       </CardFooter>
     </Card>
   )

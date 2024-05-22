@@ -4,28 +4,33 @@ import GameButton from "@/components/ui/GameButton";
 import { GameCard } from "@/components/ui/GameCard";
 import BenefitsCard from "@/components/ui/benefitsCard";
 import { ReviewsCard } from "@/components/ui/reviewsCard";
+import { useGame } from "@/hooks/useGameColorContext";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Home() {
-  const [game, setGame] = useState<string>("lol")
+  const { game, setGame} = useGame()
   const handleGameChange = (newGame: string) => {
-    setGame(newGame);
+    setGame(newGame)
   };
 
   return (
     <main className="flex relative min-h-screen w-full flex-col items-center bg-secondary text-primary overflow-hidden">
-      <video className="w-full h-screen object-cover brightness-[25%] relative z-10" autoPlay muted loop playsInline webkit-playsinline>
-        <source src="/video.mp4" type="video/mp4"/>
-      </video>
+      {game == "valorant" && (
+        <Image alt="gif" src="/raze.gif" width={0} height={0} className="w-full h-screen object-cover brightness-[25%] relative z-10" />
+      )}
+      {game == "lol" && (
+        <video className="w-full h-screen object-cover brightness-[25%] relative z-10" autoPlay muted loop playsInline webkit-playsinline>
+          <source src="/video.mp4" type="video/mp4"/>
+        </video>
+      )} 
       <section className="h-screen flex flex-col items-center justify-center absolute z-20">
         <h1 className="text-7xl font-extrabold"><span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>ELO</span>BLITZ</h1>
         <p className="text-primary-foreground text-md text-center max-w-lg pt-8">Domine seu jogo com nossa equipe especializada em Elojob. Alcance o topo com segurança e rapidez.</p>
-        <button className={`bg-${game} text-lg text-primary px-10 py-4 mt-12 rounded-lg font-semibold`}>Encontre seu Booster!</button>
+        <button className={`text-lg text-primary px-10 py-4 mt-12 rounded-lg font-semibold transition-all ${game == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"}`}>Encontre seu Booster!</button>
       </section>
         <section className="h-full flex flex-col items-center justify-center mt-12 relative">
           <div className="w-80 h-40 rounded-full absolute mx-auto top-0">
-            <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
+            <div className={`w-full h-full blur-[10rem] ${game == "valorant" ? "bg-valorant" : "bg-lol"}`}></div>
           </div>
           <h2 className="text-primary text-5xl pt-12 font-extrabold z-10">Nossos serviços</h2>
           <p className="text-primary-foreground text-md text-center max-w-lg mt-8 z-10">Suba de Ranking com <span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>Confiança.</span> Nossa equipe especializada leva você ao topo com <span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>segurança e eficácia.</span> Domine o jogo com nosso serviço de <span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>elojob profissional.</span></p>
@@ -43,24 +48,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full h-full flex flex-col items-center justify-between mt-24 relative z-10">
+        <section className="w-full h-full flex flex-col items-center mt-24 relative z-10">
           <div className="w-40 h-40 rounded-full absolute mx-auto top-20 -right-20">
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
           </div>
           <div className="w-40 h-40 rounded-full absolute mx-auto bottom-20 -left-20">
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
           </div>
-          <h2 className="text-primary text-5xl pt-12 z-10">Why choose us</h2>
+          <h2 className="text-primary text-5xl font-extrabold pt-12 z-10">Why choose us</h2>
           <p className="text-primary-foreground text-md text-center max-w-lg mt-8 z-10">A high-performing web-based car rental system for any rent-a-car company and website</p>
-          <div className="flex flex-col gap-6 mt-24">
-            <BenefitsCard icon="/phone.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Customer Support" />
-            <BenefitsCard icon="/Location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Best Price Guarantted" />
-            <BenefitsCard icon="/location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Many Location" />
+          <div className="flex w-full items-center justify-center">
+            <Image alt="logo" src={game == "valorant" ? "/logo-valorant.svg" : "logo-lol.svg"} width={0} height={0} className="object-cover h-[28rem] w-[28rem] animate-pulse"/>
+            <div className="flex flex-col gap-6 mt-24">
+              <BenefitsCard icon="/phone.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Customer Support" />
+              <BenefitsCard icon="/Location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Best Price Guarantted" />
+              <BenefitsCard icon="/location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Many Location" />
+            </div>
           </div>
         </section>
 
         <section className="w-full h-full flex flex-col items-center justify-between mt-24 relative">
-          <h2 className="text-primary text-5xl font-medium pt-12 z-10 max-w-xl text-center">Trusted by Thousands of Happy Customer</h2>
+          <h2 className="text-primary text-5xl font-extrabold pt-12 z-10 max-w-xl text-center">Trusted by Thousands of Happy Customer</h2>
           <p className="text-primary-foreground text-md text-center max-w-lg mt-8 z-10">A high-performing web-based car rental system for any rent-a-car company and website</p>
           <div className="w-40 h-40 rounded-full absolute mx-auto top-24">
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>

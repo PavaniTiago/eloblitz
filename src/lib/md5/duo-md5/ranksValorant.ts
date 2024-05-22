@@ -1,6 +1,14 @@
 import { RankData } from "@/types/rank-interface";
 
-export const Ranks: RankData[] = [
+export const RanksDuo: RankData[] = [
+  {
+    rankName: "Unranked",
+    details: {
+      backgroundColor: "#1F1717",
+      backgroundImage: "/valorant/elo-unranked.svg",
+      price: 0,
+    },
+  },
   {
     rankName: "Iron",
     details: {
@@ -78,16 +86,13 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#24A763",
       backgroundImage: "/valorant/elo-ascendant.svg",
-      division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
-      },
+      price: 0,
     },
   },
   {
     rankName: "Immortal",
     details: {
+      price: 0,
       backgroundColor: "#AC366F",
       backgroundImage: "/valorant/elo-immortal.svg",
     },
@@ -95,6 +100,7 @@ export const Ranks: RankData[] = [
   {
     rankName: "Radiant",
     details: {
+      price: 0,
       backgroundColor: "#C2974E",
       backgroundImage: "/valorant/elo-radiant.svg",
     },

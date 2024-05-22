@@ -3,7 +3,7 @@
 import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
 import { DesireblaCard } from "@/components/ui/desirableCard";
-import { Ranks } from "@/lib/ranksValorant";
+import { Ranks } from "@/lib/elo-boost/ranksValorant";
 import { RankDetails } from "@/types/rank-interface";
 import { useState } from "react";
 
@@ -29,7 +29,7 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
 
     const isRankValid = () => {
         if (!actualRank || !desirableRank) return true;
-        const rankOrder = ["Iron", "Bronze", "Silver", "Gold", "Platinum","Emerald", "Diamond", "Master", "GrandMaster", "Challenger"];
+        const rankOrder = ["Unranked", "Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ascendant", "Immortal", "Radiant"];
         const actualRankIndex = rankOrder.indexOf(actualRank.rankName);
         const desirableRankIndex = rankOrder.indexOf(desirableRank.rankName);
 
@@ -48,20 +48,20 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
                         <div className="w-full h-full bg-valorant blur-[10rem]"></div>
                     </div>
                     <h2 className="text-primary text-5xl font-extrabold pt-12 z-10 max-w-lg text-start">
-                        {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division.name} AO ${desirableRank.rankName} ${desirableRank.division ? desirableRank.division.name : ""}` : "BRONZE IV AO PLATINA IV"}
+                        {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division ? actualRank.division.name : ""} AO ${desirableRank.rankName} ${desirableRank.division ? desirableRank.division.name : ""}` : "BRONZE IV AO PLATINA IV"}
                     </h2>
                     <div className="flex items-center gap-4 z-10">
                         {isRankValid() ? (
                             <>
                                 <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
                                 <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
-                                <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">25% off</span>
+                                <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">30% off</span>
                             </>
                         ) : (
                             <p className="text-primary text-2xl font-semibold text-center z-10">Selecione um elo maior para contratar o serviço</p>
                         )}
                     </div>
-                    <Button className="bg-lol text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : "Contratar (R$ 126,00)"}`}</Button>
+                    <Button className="bg-valorant text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : "Contratar (R$ 126,00)"}`}</Button>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start justify-start border-t border-primary-foreground mt-20">

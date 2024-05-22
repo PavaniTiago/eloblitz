@@ -14,19 +14,19 @@ import { useState } from "react";
 
 interface EloDialogProps {
   rankData: RankData[];
-  onRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
+  onRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price?: number } | null }) => void;
   image: string;
 }
 
 export function EloDialog({ rankData, onRankSelect, image }: EloDialogProps) {
   const [selectedRank, setSelectedRank] = useState<{ rankName: string; details: RankDetails } | null>(null);
-  const [selectedDivision, setSelectedDivision] = useState<{ name: string; price: number } | null>(null);
+  const [selectedDivision, setSelectedDivision] = useState<{ name: string; price?: number } | null>(null);
 
   const passData = () => {
     if (selectedRank) {
         let division = selectedDivision;
-        if (!division && !["Master", "GrandMaster", "Challenger"].includes(selectedRank.rankName)) {
-            division = { name: "IV", price: 0 };
+        if (!division && !["Unranked", "Master", "GrandMaster", "Challenger", "Radiant"].includes(selectedRank.rankName) && selectedRank.details.division) {
+            division = { name: selectedRank.details.division[1].name, price: selectedRank.details.division[1].price !== null ?  selectedRank.details.division[1].price :  selectedRank.details.price};
         }
         onRankSelect({ rankName: selectedRank.rankName, division, details: selectedRank.details });
     }

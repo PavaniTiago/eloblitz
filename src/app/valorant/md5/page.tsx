@@ -3,19 +3,23 @@
 import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
 import { Md5Card } from "@/components/ui/md5Card";
-import { Ranks } from "@/lib/ranksValorant";
+import { RanksDuo } from "@/lib/md5/duo-md5/ranksValorant";
+import { Ranks } from "@/lib/md5/ranksValorant";
 import { RankDetails } from "@/types/rank-interface";
 import { useState } from "react";
 
 interface EloDialogProps {
     onActualRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
     onSelectCount: (count: number) => void;
+    onSwitch: (value: boolean) => void;
 }
 
-export default function EloBoost({ onActualRankSelect, onSelectCount }: EloDialogProps){
+export default function EloBoost({ onActualRankSelect, onSelectCount, onSwitch }: EloDialogProps){
 
     const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
-    const [count, setCount] = useState<number>(5)
+    const [count, setCount] = useState<number>(5);
+    const [duoBoost, setDuoBoost] = useState(false);
+    const [price, setPrice] = useState<number>()
 
     const handleActualRankSelect = (rank: { rankName: string; details: RankDetails; division: { name: string; price: number } }) => {
         setActualRank(rank);
@@ -28,12 +32,19 @@ export default function EloBoost({ onActualRankSelect, onSelectCount }: EloDialo
         }
     };
 
+    const handleSwitch = (value: boolean) => {
+        if (value) {
+            setDuoBoost(value)
+            onSwitch(value)
+        }
+    }
+
     return (
         <main className="flex min-h-screen w-full flex-col justify-center items-center bg-secondary text-primary pt-40">
             <section className="flex w-full max-w-7xl items-center justify-evenly">
                 <div className="flex items-center gap-8 z-10">
-                    <ActualCard gamerank={Ranks as any} onActualRankSelect={handleActualRankSelect as any} />
-                    <Md5Card onSelectCount={handleSelect as any} bgColor={actualRank?.details.backgroundColor as string} color="lol"/>
+                    <ActualCard gamerank={duoBoost ? RanksDuo as any : Ranks as any} onActualRankSelect={handleActualRankSelect as any} />
+                    <Md5Card onSwitch={handleSwitch as any} onSelectCount={handleSelect as any} bgColor={actualRank?.details.backgroundColor as string} color="valorant"/>
                 </div>
                 <div className="flex flex-col gap-4 relative">
                     <div className="w-64 h-40 rounded-full absolute mx-auto top-10">
@@ -43,7 +54,7 @@ export default function EloBoost({ onActualRankSelect, onSelectCount }: EloDialo
                     <div className="flex items-center gap-4 z-10">
                         <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
                         <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
-                        <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">25% off</span>
+                        <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">30% off</span>
                     </div>
                     <Button className="bg-valorant text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">Contratar (R$ 126,00)</Button>
                 </div>

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Dialog } from "./dialog";
 import { EloDialog } from "./eloDialog";
 import { useState } from "react";
-import { Ranks } from "@/lib/ranks";
 import { RankDetails } from "@/types/rank-interface";
 
 export interface ActualCardProps {
@@ -20,7 +19,6 @@ export function ActualCard({ onActualRankSelect, gamerank }: ActualCardProps){
         if (rank) {
           setSelectedRank({ ...rank });
           setSelectedDivision(rank.division);
-          console.log("primeiro if", rank.division)
           onActualRankSelect({ ...rank });
         } else if (rank && selectedDivision) {
             setSelectedRank(rank);
@@ -43,7 +41,7 @@ export function ActualCard({ onActualRankSelect, gamerank }: ActualCardProps){
             <EloDialog image={selectedRank?.details.backgroundImage as string} onRankSelect={handleSelect as any} rankData={gamerank as any} />
             <span className="text-xl font-medium text-primary">Selecione seu Elo Atual</span>
             {selectedRank && (
-                <h3 className="text-3xl font-semibold uppercase">{`${selectedRank.rankName} ${selectedDivision ? `${selectedDivision.name}` : ""}`}</h3>
+                <h3 className="text-3xl font-extrabold uppercase">{`${selectedRank.rankName} ${selectedDivision ? `${selectedDivision.name}` : ""}`}</h3>
             )}
         </div>
     )

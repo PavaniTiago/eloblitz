@@ -20,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={plus_Jakarta_Sans.className}>
-        <Header />
-        {children}
-        <Footer />
+        <GameProvider>
+          <Header/>
+          {children}
+          <Footer />
+        </GameProvider>
       </body>
     </html>
   );

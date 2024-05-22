@@ -3,15 +3,18 @@
 import { useState } from "react"
 import { Button } from "./button"
 import { Minus, Plus } from "lucide-react"
+import { Switch } from "./switch";
 
 interface Md5Props {
     color: string;
     onSelectCount: (count: number) => void;
+    onSwitch: (value: boolean) => void;
     bgColor: string;
 }
 
-export function Md5Card({ color, bgColor, onSelectCount }: Md5Props) {
+export function Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
     const [count, setCount] = useState<number>(5);
+    const [duoBoost, setDuoBoost] = useState(false);
 
     const decrement = () => {
         if (count > 1) {setCount(count - 1); onSelectCount(count - 1)};
@@ -50,6 +53,10 @@ export function Md5Card({ color, bgColor, onSelectCount }: Md5Props) {
                 <Button onClick={increment} className="bg-primary rounded-full h-7 w-7 p-1.5 opacity-25 hover:opacity-100 transition-all">
                     <Plus className="text-secondary-foreground" />
                 </Button>
+            </div>
+            <div className="flex mt-auto mb-4 items-center justify-center space-x-2 bg-[#000]/25 px-16 py-4 rounded-lg">
+                <span className="text-xl font-medium text-primary">Duo Boost</span>
+                <Switch onClick={(value) => {setDuoBoost(!value); onSwitch(duoBoost)}} />
             </div>
         </div>
     );
