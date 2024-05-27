@@ -9,6 +9,7 @@ export interface RankDetails {
   backgroundColor: string;
   backgroundImage: string | StaticImageData;
   price?: number;
+  matchPrice?: number;
   division?: {
     [key: number]: DivisionDetails;
   };

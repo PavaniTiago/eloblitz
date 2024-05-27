@@ -4,7 +4,7 @@ import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
 import { DesireblaCard } from "@/components/ui/desirableCard";
 import { Ranks } from "@/lib/elo-boost/ranks";
-import { RankDetails } from "@/types/rank-interface";
+import { DivisionDetails, RankDetails } from "@/types/rank-interface";
 import { useState } from "react";
 
 interface EloDialogProps {
@@ -28,12 +28,59 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
 
     const isRankValid = () => {
         if (!actualRank || !desirableRank) return true;
-        const rankOrder = ["Iron", "Bronze", "Silver", "Gold", "Platinum","Emerald", "Diamond", "Master", "GrandMaster", "Challenger"];
+        const rankOrder = ["Ferro", "Bronze", "Prata", "Ouro", "Platina", "Esmeralda", "Diamante", "Mestre", "Grão Mestre", "Desafiante"];
         const actualRankIndex = rankOrder.indexOf(actualRank.rankName);
         const desirableRankIndex = rankOrder.indexOf(desirableRank.rankName);
 
         return actualRankIndex <= desirableRankIndex;
     };
+
+    const calculateTotalPrice = () => {
+        let totalPrice = 0;
+        let totalPriceWithDiscount = 0;
+    
+        if (actualRank && desirableRank) {
+            const rankOrder = ["Ferro", "Bronze", "Prata", "Ouro", "Platina", "Esmeralda", "Diamante", "Mestre", "Grão Mestre", "Desafiante"];
+            const actualRankIndex = rankOrder.indexOf(actualRank.rankName);
+            const desirableRankIndex = rankOrder.indexOf(desirableRank.rankName);
+    
+            if (actualRankIndex === -1 || desirableRankIndex === -1) {
+                console.error("Rank not found in rankOrder");
+                return { totalPrice, totalPriceWithDiscount };
+            }
+    
+            if (actualRankIndex > desirableRankIndex) {
+                return { totalPrice, totalPriceWithDiscount };
+            }
+    
+            for (let i = actualRankIndex; i <= desirableRankIndex; i++) {
+                const currentRankData = Ranks.find(rank => rank.rankName === rankOrder[i]);
+    
+                if (currentRankData && currentRankData.details.division) {
+                    const divisions = currentRankData.details.division;
+                    const divisionKeys = Object.keys(divisions).map(key => divisions[key as any].name);
+    
+                    const actualDivisionName = i === actualRankIndex ? actualRank.division.name : divisionKeys[0];
+                    const desirableDivisionName = i === desirableRankIndex ? desirableRank.division.name : divisionKeys[divisionKeys.length - 1];
+    
+                    const startDivisionIndex = divisionKeys.indexOf(actualDivisionName);
+                    const endDivisionIndex = divisionKeys.indexOf(desirableDivisionName);
+    
+                    if (startDivisionIndex === -1 || endDivisionIndex === -1) continue;
+    
+                    for (let j = startDivisionIndex; j <= endDivisionIndex; j++) {
+                        totalPrice += divisions[Object.keys(divisions)[j] as any].price;
+                    }
+                } else if (currentRankData && currentRankData.details.price) {
+                    totalPrice += currentRankData.details.price;
+                }
+            }
+            totalPriceWithDiscount = totalPrice * 0.7;
+        }
+        return { totalPrice, totalPriceWithDiscount };
+    };
+    
+    const { totalPrice, totalPriceWithDiscount } = calculateTotalPrice();
 
     return (
         <main className="flex min-h-screen w-full flex-col justify-center items-center bg-secondary text-primary pt-40">
@@ -52,15 +99,15 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
                     <div className="flex items-center gap-4 z-10">
                         {isRankValid() ? (
                             <>
-                                <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
-                                <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
+                                <p className="text-primary text-2xl font-semibold text-center z-10">R$ {totalPriceWithDiscount.toFixed(2)}</p>
+                                <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ {totalPrice.toFixed(2)}</del>
                                 <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">30% off</span>
                             </>
                         ) : (
                             <p className="text-primary text-2xl font-semibold text-center z-10">Selecione um elo maior para contratar o serviço</p>
                         )}
                     </div>
-                    <Button className="bg-lol text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : "Contratar (R$ 126,00)"}`}</Button>
+                    <Button className="bg-lol text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : `Contratar (R$ ${totalPriceWithDiscount.toFixed(2)})`}`}</Button>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start justify-start border-t border-primary-foreground mt-20">

@@ -6,15 +6,11 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#1F1717",
       backgroundImage: "/valorant/elo-unranked.svg",
-      division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
-      },
+      price: 0,
     },
   },
   {
-    rankName: "Iron",
+    rankName: "Ferro",
     details: {
       backgroundColor: "#584C4B",
       backgroundImage: "/valorant/elo-iron.svg",
@@ -38,7 +34,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Silver",
+    rankName: "Prata",
     details: {
       backgroundColor: "#556B80",
       backgroundImage: "/valorant/elo-silver.svg",
@@ -50,7 +46,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Gold",
+    rankName: "Ouro",
     details: {
       backgroundColor: "#C27C34",
       backgroundImage: "/valorant/elo-gold.svg",
@@ -62,7 +58,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Platinum",
+    rankName: "Platina",
     details: {
       backgroundColor: "#24A094",
       backgroundImage: "/valorant/elo-plat.svg",
@@ -74,7 +70,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Diamond",
+    rankName: "Diamante",
     details: {
       backgroundColor: "#6C61CC",
       backgroundImage: "/valorant/elo-diamond.svg",
@@ -86,7 +82,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Ascendant",
+    rankName: "Ascendente",
     details: {
       backgroundColor: "#24A763",
       backgroundImage: "/valorant/elo-ascendant.svg",
@@ -105,7 +101,7 @@ export const Ranks: RankData[] = [
     },
   },
   {
-    rankName: "Radiant",
+    rankName: "Radiante",
     details: {
       backgroundColor: "#C2974E",
       backgroundImage: "/valorant/elo-radiant.svg",

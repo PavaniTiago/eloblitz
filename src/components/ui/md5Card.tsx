@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Button } from "./button"
 import { Minus, Plus } from "lucide-react"
 import { Switch } from "./switch";
+import { log } from "console";
 
 interface Md5Props {
     color: string;
@@ -56,7 +57,11 @@ export function Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
             </div>
             <div className="flex mt-auto mb-4 items-center justify-center space-x-2 bg-[#000]/25 px-16 py-4 rounded-lg">
                 <span className="text-xl font-medium text-primary">Duo Boost</span>
-                <Switch onClick={(value) => {setDuoBoost(!value); onSwitch(duoBoost)}} />
+                <Switch onClick={() => {
+                    setDuoBoost(prevDuoBoost => !prevDuoBoost);
+                    onSwitch(!duoBoost);
+                    console.log(!duoBoost, "chego");
+                }} />
             </div>
         </div>
     );

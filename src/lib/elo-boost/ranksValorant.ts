@@ -1,3 +1,6 @@
+
+
+
 import { RankData } from "@/types/rank-interface";
 
 export const Ranks: RankData[] = [
@@ -6,22 +9,18 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#1F1717",
       backgroundImage: "/valorant/elo-unranked.svg",
-      division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
-      },
+      price: 0,
     },
   },
   {
-    rankName: "Iron",
+    rankName: "Ferro",
     details: {
       backgroundColor: "#584C4B",
       backgroundImage: "/valorant/elo-iron.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 9.64, name: "III" },
+        2: { price: 9.64, name: "II" },
+        3: { price: 9.64, name: "I" },
       },
     },
   },
@@ -31,69 +30,69 @@ export const Ranks: RankData[] = [
       backgroundColor: "#794A36",
       backgroundImage: "/valorant/elo-bronze.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 9.64, name: "III" },
+        2: { price: 9.64, name: "II" },
+        3: { price: 9.64, name: "I" },
       },
     },
   },
   {
-    rankName: "Silver",
+    rankName: "Prata",
     details: {
       backgroundColor: "#556B80",
       backgroundImage: "/valorant/elo-silver.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 9.64, name: "III" },
+        2: { price: 15.00, name: "II" },
+        3: { price: 15.00, name: "I" },
       },
     },
   },
   {
-    rankName: "Gold",
+    rankName: "Ouro",
     details: {
       backgroundColor: "#C27C34",
       backgroundImage: "/valorant/elo-gold.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 15.00, name: "III" },
+        2: { price: 25.71, name: "II" },
+        3: { price: 25.71, name: "I" },
       },
     },
   },
   {
-    rankName: "Platinum",
+    rankName: "Platina",
     details: {
       backgroundColor: "#24A094",
       backgroundImage: "/valorant/elo-plat.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 25.71, name: "III" },
+        2: { price: 33.21, name: "II" },
+        3: { price: 33.21, name: "I" },
       },
     },
   },
   {
-    rankName: "Diamond",
+    rankName: "Diamante",
     details: {
       backgroundColor: "#6C61CC",
       backgroundImage: "/valorant/elo-diamond.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 33.21, name: "III" },
+        2: { price: 60.00, name: "II" },
+        3: { price: 60.00, name: "I" },
       },
     },
   },
   {
-    rankName: "Ascendant",
+    rankName: "Ascendente",
     details: {
       backgroundColor: "#24A763",
       backgroundImage: "/valorant/elo-ascendant.svg",
       division: {
-        1: { price: 10, name: "III" },
-        2: { price: 10, name: "II" },
-        3: { price: 10, name: "I" },
+        1: { price: 60.00, name: "III" },
+        2: { price: 85.71, name: "II" },
+        3: { price: 85.71, name: "I" },
       },
     },
   },
@@ -102,13 +101,19 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#AC366F",
       backgroundImage: "/valorant/elo-immortal.svg",
+      division: {
+        1: { price: 166.07, name: "III" },
+        2: { price: 141.43, name: "II" },
+        3: { price: 102.86, name: "I" },
+      },
     },
   },
   {
-    rankName: "Radiant",
+    rankName: "Radiante",
     details: {
       backgroundColor: "#C2974E",
       backgroundImage: "/valorant/elo-radiant.svg",
+      price: 535.71,
     },
   },
 ];

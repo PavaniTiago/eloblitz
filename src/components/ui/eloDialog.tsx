@@ -22,15 +22,15 @@ export function EloDialog({ rankData, onRankSelect, image }: EloDialogProps) {
   const [selectedRank, setSelectedRank] = useState<{ rankName: string; details: RankDetails } | null>(null);
   const [selectedDivision, setSelectedDivision] = useState<{ name: string; price?: number } | null>(null);
 
-  const passData = () => {
-    if (selectedRank) {
-        let division = selectedDivision;
-        if (!division && !["Unranked", "Master", "GrandMaster", "Challenger", "Radiant"].includes(selectedRank.rankName) && selectedRank.details.division) {
-            division = { name: selectedRank.details.division[1].name, price: selectedRank.details.division[1].price !== null ?  selectedRank.details.division[1].price :  selectedRank.details.price};
+    const passData = () => {
+        if (selectedRank) {
+            let division = selectedDivision;
+            if (!division && !["Unranked", "Mestre", "Grão Mestre", "Desafiante", "Radiante"].includes(selectedRank.rankName) && selectedRank.details.division) {
+                division = { name: selectedRank.details.division[1].name, price: selectedRank.details.division[1].price !== null ?  selectedRank.details.division[1].price :  selectedRank.details.price};
+            }
+            onRankSelect({ rankName: selectedRank.rankName, division, details: selectedRank.details });
         }
-        onRankSelect({ rankName: selectedRank.rankName, division, details: selectedRank.details });
-    }
-};
+    };
 
 return (
     <Dialog>

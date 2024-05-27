@@ -38,7 +38,7 @@ export function DesireblaCard({ onDesirebleRankSelect, gameRank }: DesireblaCard
     return (
         <div className="flex flex-col items-center pt-20 h-[32rem] w-[20rem] rounded-2xl z-20" style={{ backgroundColor: backgroundColor }}>
             <DesirebleEloDialog image={selectedRank?.details.backgroundImage as string} onRankSelect={handleSelect as any} rankData={gameRank}/>
-            <span className="text-xl font-medium text-primary">Selecione seu Elo Atual</span>
+            <span className="text-xl font-medium text-primary">Selecione seu Elo Desejado</span>
             {selectedRank && (
                 <h3 className="text-3xl font-extrabold uppercase">{`${selectedRank.rankName} ${selectedDivision ? `${selectedDivision.name}` : ""}`}</h3>
             )}

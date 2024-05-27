@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeaderLinks } from "./headerLinks";
 import { useEffect, useState } from "react";
+import { MenuDrawer } from "./menuDrawer";
 
 export function Header(){
     const { game, setGame } = useGame()
@@ -31,10 +32,15 @@ export function Header(){
     }, [game]);
 
     return(
-        <header className="flex absolute top-0 bg-current z-30 text-primary items-center justify-between w-full h-24 px-14">
+        <header className="flex absolute top-0 bg-current z-30 text-primary items-center justify-between w-full h-24 md:px-14 px-4">
             <Link href="/"><Image alt="logo eloblitz" src={color} width={0} height={0} className="object-cover w-28 h-28" /></Link>
-            <nav className="flex gap-10 items-center mr-12">
-                <HeaderLinks />
+            <nav className="flex gap-10 items-center md:mr-12">
+                <div className="hidden md:block">
+                    <HeaderLinks />
+                </div>
+                <div className="block md:hidden">
+                    <MenuDrawer />
+                </div>
             </nav>
         </header>
     )

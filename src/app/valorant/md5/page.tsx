@@ -6,7 +6,7 @@ import { Md5Card } from "@/components/ui/md5Card";
 import { RanksDuo } from "@/lib/md5/duo-md5/ranksValorant";
 import { Ranks } from "@/lib/md5/ranksValorant";
 import { RankDetails } from "@/types/rank-interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface EloDialogProps {
     onActualRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
@@ -15,35 +15,65 @@ interface EloDialogProps {
 }
 
 export default function EloBoost({ onActualRankSelect, onSelectCount, onSwitch }: EloDialogProps){
-
     const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
     const [count, setCount] = useState<number>(5);
-    const [duoBoost, setDuoBoost] = useState(false);
-    const [price, setPrice] = useState<number>()
+    const [duoBoost, setDuoBoost] = useState<boolean>(false);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState<number>(0);
+
+    useEffect(() => {
+        const { totalPrice, totalPriceWithDiscount } = calculateTotalPrice(actualRank, count);
+        setTotalPrice(totalPrice);
+        setTotalPriceWithDiscount(totalPriceWithDiscount);
+    }, [actualRank, count, duoBoost]);
 
     const handleActualRankSelect = (rank: { rankName: string; details: RankDetails; division: { name: string; price: number } }) => {
         setActualRank(rank);
         onActualRankSelect(rank);
     };
+
     const handleSelect = (count: number) => {
-        if (count) {
-          setCount(count)
-          onSelectCount(count)
-        }
+        setCount(count);
+        onSelectCount(count);
     };
 
     const handleSwitch = (value: boolean) => {
-        if (value) {
-            setDuoBoost(value)
-            onSwitch(value)
+        setDuoBoost(value);
+        if (typeof onSwitch === 'function') {
+            onSwitch(value);
+        } else {
+            console.error("onSwitch não é uma função válida");
         }
-    }
+    };
+
+    const calculateTotalPrice = (actualRank: { rankName: string; details: RankDetails; division: { name: string; price: number } } | null, count: number) => {
+        let totalPrice = 0;
+        let totalPriceWithDiscount = 0;
+
+        if (actualRank) {
+            const currentRankData = (duoBoost ? RanksDuo : Ranks).find(rank => rank.rankName === actualRank.rankName);
+
+            if (currentRankData) {
+                const rankPrice = currentRankData.details.price || 0;
+                console.log(rankPrice)
+                const matchPrice = currentRankData.details.matchPrice || 0;
+
+                totalPrice = rankPrice + matchPrice * (count - 5);
+
+                totalPriceWithDiscount = totalPrice * 0.7;
+            }
+        }
+
+        return { totalPrice, totalPriceWithDiscount };
+    };
+
+    const gameranks = duoBoost ? RanksDuo : Ranks;
 
     return (
         <main className="flex min-h-screen w-full flex-col justify-center items-center bg-secondary text-primary pt-40">
             <section className="flex w-full max-w-7xl items-center justify-evenly">
                 <div className="flex items-center gap-8 z-10">
-                    <ActualCard gamerank={duoBoost ? RanksDuo as any : Ranks as any} onActualRankSelect={handleActualRankSelect as any} />
+                    <ActualCard gamerank={gameranks} onActualRankSelect={handleActualRankSelect as any} />
                     <Md5Card onSwitch={handleSwitch as any} onSelectCount={handleSelect as any} bgColor={actualRank?.details.backgroundColor as string} color="valorant"/>
                 </div>
                 <div className="flex flex-col gap-4 relative">
@@ -52,11 +82,13 @@ export default function EloBoost({ onActualRankSelect, onSelectCount, onSwitch }
                     </div>
                     <h2 className="text-primary text-5xl font-extrabold pt-12 z-10 max-w-lg text-start">{actualRank ? `${actualRank.rankName} ${actualRank.division ? actualRank.division.name : ""} ${`(${count} Partidas)`}` : `BRONZE IV ${`(${count} Partidas)`}`}</h2>
                     <div className="flex items-center gap-4 z-10">
-                        <p className="text-primary text-2xl font-semibold text-center z-10">R$ 126,00</p>
-                        <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ 96,00</del>
-                        <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">30% off</span>
+                        <p className="text-primary text-2xl font-semibold text-center z-10">R$ {totalPriceWithDiscount.toFixed(2)}</p>
+                        <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ {totalPrice.toFixed(2)}</del>
+                        <span className="border-lol border rounded-full text-lol text-sm p-1.5 px-2">30% off</span>
                     </div>
-                    <Button className="bg-valorant text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">Contratar (R$ 126,00)</Button>
+                    <Button className="bg-lol text-xl text-primary max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">
+                        Contratar (R$ {totalPriceWithDiscount.toFixed(2)})
+                    </Button>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start justify-start border-t border-primary-foreground mt-20">
