@@ -12,7 +12,7 @@ interface EloDialogProps {
     onDesirebleRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
 }
 
-export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialogProps){
+export default function Page({ onActualRankSelect, onDesirebleRankSelect }: EloDialogProps){
     const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
     const [desirableRank, setDesirableRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
 

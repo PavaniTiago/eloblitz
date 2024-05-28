@@ -14,7 +14,7 @@ interface EloDialogProps {
     onSwitch: (value: boolean) => void;
 }
 
-export default function EloBoost({ onActualRankSelect, onSelectCount, onSwitch }: EloDialogProps){
+export default function Page({ onActualRankSelect, onSelectCount, onSwitch }: EloDialogProps){
     const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
     const [count, setCount] = useState<number>(5);
     const [duoBoost, setDuoBoost] = useState<boolean>(false);

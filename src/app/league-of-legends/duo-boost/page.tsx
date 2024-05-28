@@ -2,19 +2,21 @@
 
 import { ActualCard } from "@/components/ui/actualCard";
 import { Button } from "@/components/ui/button";
-import { DesireblaCard } from "@/components/ui/desirableCard";
+import { DesireblaCard } from "@/components/ui/desirableCard"; // Corrigido o nome do componente
 import { Ranks } from "@/lib/duo-boost/ranks";
 import { RankDetails } from "@/types/rank-interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface EloDialogProps {
     onActualRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
     onDesirebleRankSelect: (rank: { rankName: string; details: RankDetails; division?: { name: string; price: number } | null }) => void;
 }
 
-export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialogProps) {
+export default function Page({ onActualRankSelect, onDesirebleRankSelect }: EloDialogProps) {
     const [actualRank, setActualRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
     const [desirableRank, setDesirableRank] = useState<{ rankName: string; details: RankDetails; division: { name: string; price: number } } | null>(null);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState<number>(0);
 
     const handleActualRankSelect = (rank: { rankName: string; details: RankDetails; division: { name: string; price: number } }) => {
         setActualRank(rank);
@@ -79,8 +81,12 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
         }
         return { totalPrice, totalPriceWithDiscount };
     };
-    
-    const { totalPrice, totalPriceWithDiscount } = calculateTotalPrice();
+
+    useEffect(() => {
+        const { totalPrice, totalPriceWithDiscount } = calculateTotalPrice();
+        setTotalPrice(totalPrice);
+        setTotalPriceWithDiscount(totalPriceWithDiscount);
+    }, [actualRank, desirableRank]);
 
     return (
         <main className="flex min-h-screen w-full flex-col justify-center items-center bg-secondary text-primary pt-40">
@@ -116,7 +122,6 @@ export default function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: 
                     Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo boost (Elo Job) é o serviço ideal para você.
                 </p>
                 <p className="text-primary-foreground text-md max-w-xl mt-6 z-10">
-                    Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo boost (Elo Job) é o serviço ideal para você.
                     Nós jogaremos para você até atingir o ELO desejado. Você poderá observar como nos comportamos em partidas ranqueadas, entender as táticas e estratégias utilizadas para subir de ELO, além de receber dicas para melhorar sua performance in-game e evoluir sozinho.
                 </p>
                 <p className="text-primary-foreground text-md max-w-xl mt-6 z-10">
