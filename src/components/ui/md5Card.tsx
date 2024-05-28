@@ -13,7 +13,7 @@ interface Md5Props {
     bgColor: string;
 }
 
-export function Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
+export function     Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
     const [count, setCount] = useState<number>(5);
     const [duoBoost, setDuoBoost] = useState(false);
 
@@ -34,8 +34,8 @@ export function Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
     : "#6B4230";
 
     return (
-        <div className={`flex flex-col items-center pt-20 h-[32rem] w-[20rem] rounded-xl`} style={{backgroundColor: backgroundColor}}>
-            <div className="flex items-center justify-center bg-[#000]/25 w-32 h-32 rounded-full p-6">
+        <div className={`flex flex-col items-center pt-20 h-[26rem] w-[18rem] md:h-[32rem] md:w-[20rem] rounded-2xl z-20`} style={{backgroundColor: backgroundColor}}>
+            <div className="flex items-center justify-center bg-[#000]/25 w-28 h-28 md:w-32 md:h-32 rounded-full p-6">
                 <span className="text-5xl text-primary font-extrabold">{count}</span>
             </div>
             <span className="text-xl font-medium text-primary pt-12">Quantidade de Partidas</span>
@@ -55,7 +55,7 @@ export function Md5Card({ color, bgColor, onSelectCount, onSwitch }: Md5Props) {
                     <Plus className="text-secondary-foreground" />
                 </Button>
             </div>
-            <div className="flex mt-auto mb-4 items-center justify-center space-x-2 bg-[#000]/25 px-16 py-4 rounded-lg">
+            <div className="flex mt-auto mb-4 items-center justify-center space-x-2 bg-[#000]/25 px-8 md:px-16 py-4 rounded-lg">
                 <span className="text-xl font-medium text-primary">Duo Boost</span>
                 <Switch onClick={() => {
                     setDuoBoost(prevDuoBoost => !prevDuoBoost);

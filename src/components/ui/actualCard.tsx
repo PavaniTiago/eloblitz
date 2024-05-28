@@ -37,7 +37,7 @@ export function ActualCard({ onActualRankSelect, gamerank }: ActualCardProps){
 
 
     return (
-        <div className="flex flex-col items-center pt-20 h-[32rem] w-[20rem] bg-[#7A4B36] rounded-2xl" style={{ backgroundColor: backgroundColor }}>
+        <div className="flex flex-col items-center pt-20 h-[26rem] w-[18rem] md:h-[32rem] md:w-[20rem] bg-[#7A4B36] rounded-2xl" style={{ backgroundColor: backgroundColor }}>
             <EloDialog image={selectedRank?.details.backgroundImage as string} onRankSelect={handleSelect as any} rankData={gamerank as any} />
             <span className="text-xl font-medium text-primary">Selecione seu Elo Atual</span>
             {selectedRank && (

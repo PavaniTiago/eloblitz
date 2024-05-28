@@ -36,7 +36,7 @@ export function DesireblaCard({ onDesirebleRankSelect, gameRank }: DesireblaCard
 
 
     return (
-        <div className="flex flex-col items-center pt-20 h-[32rem] w-[20rem] rounded-2xl z-20" style={{ backgroundColor: backgroundColor }}>
+        <div className="flex flex-col items-center pt-20 h-[26rem] w-[18rem] md:h-[32rem] md:w-[20rem] rounded-2xl z-20" style={{ backgroundColor: backgroundColor }}>
             <DesirebleEloDialog image={selectedRank?.details.backgroundImage as string} onRankSelect={handleSelect as any} rankData={gameRank}/>
             <span className="text-xl font-medium text-primary">Selecione seu Elo Desejado</span>
             {selectedRank && (

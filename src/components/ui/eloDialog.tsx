@@ -39,7 +39,7 @@ return (
                 <Image alt="elo image" src={image ? image : "/elo-bronze.svg"} width={0} height={0} className="object-cover w-40 h-40" />
             </div>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-7xl bg-secondary-foreground border-secondary border-2">
+        <DialogContent className="sm:max-w-7xl max-h-screen bg-secondary-foreground border-secondary border-2">
             <DialogHeader>
                 <DialogTitle className="text-primary text-xl">Selecione a sua Liga e Divisão Anterior</DialogTitle>
             </DialogHeader>
@@ -47,14 +47,14 @@ return (
                 {rankData.map((rank, idx) => (
                     <div
                         key={idx}
-                        className={`flex flex-col items-center cursor-pointer`}
+                        className={`flex flex-col justify-center items-center cursor-pointer`}
                         onClick={() => {
                             setSelectedRank(rank);
                             setSelectedDivision(null);
                         }}
                     >
-                        <Image alt="rank image" src={rank.details.backgroundImage} width={0} height={0} className={`w-36 p-3 h-36 border-primary-foreground border-2 rounded-full ${selectedRank?.rankName === rank.rankName ? "bg-lol" : ""}`} />
-                        <h3 className="text-lg font-semibold text-primary">{rank.rankName}</h3>
+                        <Image alt="rank image" src={rank.details.backgroundImage} width={0} height={0} className={`md:w-36 p-3 h-20 w-20 md:h-36 border-primary-foreground border-2 rounded-full ${selectedRank?.rankName === rank.rankName ? "bg-lol" : ""}`} />
+                        <h3 className="text-base md:text-lg text-center font-semibold text-primary">{rank.rankName}</h3>
                     </div>
                 ))}
             </div>
