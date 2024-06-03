@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import Image, { StaticImageData } from "next/image";
 import { RankData, RankDetails } from "@/types/rank-interface";
+import { useGame } from "@/hooks/useGameColorContext";
 
 
 interface DesirebleEloDialogProps {
@@ -21,6 +22,7 @@ interface DesirebleEloDialogProps {
 export function DesirebleEloDialog({ rankData, onRankSelect, image }: DesirebleEloDialogProps) {
   const [selectedRank, setSelectedRank] = useState<{ rankName: string; details: RankDetails } | null>(null);
   const [selectedDivision, setSelectedDivision] = useState<{ name: string; price?: number } | null>(null);
+  const { game, setGame } = useGame()
 
   const passData = () => {
     if (selectedRank) {
@@ -36,7 +38,7 @@ return (
     <Dialog>
         <DialogTrigger asChild className="cursor-pointer animate-pulse">
             <div>
-                <Image alt="elo image" src={image ? image : "/elo-bronze.svg"} width={0} height={0} className="object-cover w-40 h-40" />
+                <Image alt="elo image" src={image ? image : game == "valorant" ? "/valorant/elo-unranked.svg" : "/elo-unranked.svg"} width={0} height={0} className="object-cover w-40 h-40" />
             </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-7xl max-h-screen bg-secondary-foreground border-secondary border-2">

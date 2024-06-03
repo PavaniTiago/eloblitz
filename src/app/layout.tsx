@@ -4,6 +4,7 @@ import "./globals.css";
 import { GameProvider } from "@/hooks/useGameColorContext";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/footer";
+import { WhattsAppButton } from "@/components/ui/whattsup-button";
 
 const plus_Jakarta_Sans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <GameProvider>
           <Header/>
           {children}
+          <WhattsAppButton />
           <Footer />
         </GameProvider>
       </body>

@@ -10,15 +10,17 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 interface GameCardProps {
     title: string;
     description: string;
     icon: StaticImageData | string;
     color: string;
+    href: string;
 }
 
-export function GameCard({ description, icon, title, color }: GameCardProps) {
+export function GameCard({ description, icon, title, color, href }: GameCardProps) {
   return (
     <Card color={color} className={`w-[300px] h-[440px] relative bg-secondary-foreground border-2 border-secondary-foreground z-20 hover:border-2 ${color == "valorant" ? "hover:border-valorant" : "hover:border-lol"}`}>
       <CardHeader>
@@ -31,7 +33,7 @@ export function GameCard({ description, icon, title, color }: GameCardProps) {
         <CardDescription className="text-primary-foreground">{description}</CardDescription>
       </CardContent>
       <CardFooter className="absolute bottom-0">
-        <Button className={`${color == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"} transition-all text-md hover:bg font-normal text-primary w-64 py-6`}>Adquirir</Button>
+        <Link href={href}><Button className={`${color == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"} transition-all text-md hover:bg font-normal text-primary w-64 py-6`}>Adquirir</Button></Link>
       </CardFooter>
     </Card>
   )

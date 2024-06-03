@@ -13,6 +13,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import Image from "next/image"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -75,14 +76,14 @@ export function HeaderLinks() {
         <NavigationMenuItem>
           <Link href="/faq" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Faq
+              FAQ
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/contato" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Contato
+              <Image alt="discord icon" src="/discord.svg" width={0} height={0} className="w-8 h-8 my-auto"/>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

@@ -6,6 +6,7 @@ import BenefitsCard from "@/components/ui/benefitsCard";
 import { ReviewsCard } from "@/components/ui/reviewsCard";
 import { useGame } from "@/hooks/useGameColorContext";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const { game, setGame} = useGame()
@@ -26,9 +27,9 @@ export default function Home() {
       <section className="h-screen flex flex-col items-center justify-center absolute z-20">
         <h1 className="md:text-7xl text-5xl font-extrabold"><span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>ELO</span>BLITZ</h1>
         <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg pt-8">Domine seu jogo com nossa equipe especializada em Elojob. Alcance o topo com segurança e rapidez.</p>
-        <button className={`text-md md:text-lg text-primary px-8 py-3 md:px-10 md:py-4 mt-6 md:mt-12 rounded-lg font-semibold transition-all ${game == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"}`}>Encontre seu Booster!</button>
+        <Link href="#services"><button className={`text-md md:text-lg text-primary px-8 py-3 md:px-10 md:py-4 mt-6 md:mt-12 rounded-lg font-semibold transition-all ${game == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"}`}>Encontre seu Booster!</button></Link>
       </section>
-        <section className="h-full flex flex-col items-center justify-center mt-12 relative">
+        <section id="services" className="h-full flex flex-col items-center justify-center mt-12 relative">
           <div className="w-80 h-40 rounded-full absolute mx-auto top-0">
             <div className={`w-full h-full blur-[10rem] ${game == "valorant" ? "bg-valorant" : "bg-lol"}`}></div>
           </div>
@@ -39,12 +40,17 @@ export default function Home() {
             <GameButton onClick={() => handleGameChange("valorant")} className={`${game == "lol" ? "opacity-50" : "opacity-100"}`} icon="/game2.svg" title="Valorant"/>
           </div>
           <div className="w-screen">
-            <Image alt={`${game == "valorant" ? "raze image" : "lee sin image"}`} src={`${game == "valorant" ? "/raze.svg" : "/lee-sin.svg"}`} width={0} height={0} className={`saturate-150 hidden md:block brightness-110 absolute ${game == "valorant" ? "right-2 bottom-4 w-[30rem] h-[43rem] object-cover" : "left-2 bottom-4  w-[40rem] h-[40rem]"}`}/>
+            {game == "valorant" && (
+              <Image alt="raze image" src="/raze.webp" sizes="100vw" width={0} height={0} className="saturate-150 hidden md:block absolute right-0 bottom-0 w-[26rem] object-cover"/>
+            )}
+            {game == "lol" && (
+              <Image alt="lee sin image" src="/lee-sin.webp" sizes="100vw" width={0} height={0} className="saturate-150 hidden md:block absolute left-2 bottom-4 w-[38rem] brightness-75 object-cover"/>
+            )}
           </div>
-          <div className={`flex flex-col md:flex-row items-center gap-10 mt-6 ${game == "valorant" ? "md:mr-40" : "md:ml-40"}`}>
-            <GameCard color={game} description="Você irá jogar duo com um jogador profissional, até chegar no elo desejado." icon="/double-up.svg" title="Duo Boost" />
-            <GameCard color={game} description="Um jogador profissional irá garantir o elo desejado jogando em sua conta." icon="/trophy.svg" title="Elo job" />
-            <GameCard color={game} description="Iremos garantir o melhor desempenho possível na sua classificatória." icon="/increase.svg" title="Md5" />
+          <div className={`flex flex-col md:flex-row items-center gap-10 z-20 mt-6 ${game == "valorant" ? "md:mr-40" : "md:ml-40"}`}>
+            <GameCard href={game == "valorant" ? "valorant/elo-boost" : "league-of-legends/elo-boost"} color={game} description="Você irá jogar duo com um jogador profissional, até chegar no elo desejado." icon="/double-up.svg" title="Duo Boost" />
+            <GameCard href={game == "valorant" ? "valorant/duo-boost" : "league-of-legends/duo-boost"} color={game} description="Um jogador profissional irá garantir o elo desejado jogando em sua conta." icon="/trophy.svg" title="Elo job" />
+            <GameCard href={game == "valorant" ? "valorant/md5" : "league-of-legends/md5"} color={game} description="Iremos garantir o melhor desempenho possível na sua classificatória." icon="/increase.svg" title="Md5" />
           </div>
         </section>
 

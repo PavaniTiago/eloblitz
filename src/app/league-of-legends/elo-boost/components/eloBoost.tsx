@@ -98,7 +98,7 @@ export function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialo
                         <div className="w-full h-full bg-lol blur-[10rem]"></div>
                     </div>
                     <h2 className="text-primary text-center text-4xl md:text-5xl font-extrabold pt-12 z-10 max-w-lg md:text-start">
-                        {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division.name ? actualRank.division.name : ""} AO ${desirableRank.rankName} ${desirableRank.division ? desirableRank.division.name : ""}` : "BRONZE IV AO PLATINA IV"}
+                    {actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division?.name || ""} AO ${desirableRank.rankName} ${desirableRank.division?.name || ""}` : "BRONZE IV AO PLATINA IV"}
                     </h2>
                     <div className="flex items-center md:justify-start justify-center gap-4 z-10">
                         {isRankValid() ? (
