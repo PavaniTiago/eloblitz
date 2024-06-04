@@ -1,14 +1,14 @@
 import { RankData } from "@/types/rank-interface";
 
 export const Ranks: RankData[] = [
-  {
-    rankName: "Unranked",
-    details: {
-      backgroundColor: "#1F1717",
-      backgroundImage: "/elo-unranked.svg",
-      price: 0,
-    },
-  },
+  // {
+  //   rankName: "Unranked",
+  //   details: {
+  //     backgroundColor: "#1F1717",
+  //     backgroundImage: "/elo-unranked.svg",
+  //     price: 0,
+  //   },
+  // },
   {
     rankName: "Ferro",
     details: {

@@ -16,7 +16,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#5B443F",
       backgroundImage: "/elo-iron.svg",
       price: 19.20,
-      matchPrice: 3.84,
+      matchPrice: 4.00,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },
@@ -31,7 +31,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#794A36",
       backgroundImage: "/elo-bronze.svg",
       price: 22.90,
-      matchPrice: 4.58,
+      matchPrice: 4.60,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },
@@ -46,7 +46,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#556B80",
       backgroundImage: "/elo-silver.svg",
       price: 25.70,
-      matchPrice: 1.00,
+      matchPrice: 5.20,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },
@@ -61,7 +61,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#C27C34",
       backgroundImage: "/elo-gold.svg",
       price: 30.40,
-      matchPrice: 6.08,
+      matchPrice: 6.25,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },
@@ -76,7 +76,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#2F8E94",
       backgroundImage: "/elo-plat.svg",
       price: 42.54,
-      matchPrice: 8.51,
+      matchPrice: 8.50,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },
@@ -91,7 +91,7 @@ export const Ranks: RankData[] = [
       backgroundColor: "#009F61",
       backgroundImage: "/elo-emerald.svg",
       price: 51.40,
-      matchPrice: 10.28,
+      matchPrice: 10.50,
       division: {
         1: { price: 10, name: "IV" },
         2: { price: 10, name: "III" },

@@ -1,14 +1,14 @@
 import { RankData } from "@/types/rank-interface";
 
 export const Ranks: RankData[] = [
-  {
-    rankName: "Unranked",
-    details: {
-      backgroundColor: "#1F1717",
-      backgroundImage: "/elo-unranked.svg",
-      price: 0,
-    },
-  },
+  // {
+  //   rankName: "Unranked",
+  //   details: {
+  //     backgroundColor: "#1F1717",
+  //     backgroundImage: "/elo-unranked.svg",
+  //     price: 0,
+  //   },
+  // },
   {
     rankName: "Ferro",
     details: {
@@ -80,9 +80,9 @@ export const Ranks: RankData[] = [
       backgroundColor: "#009F61",
       backgroundImage: "/elo-emerald.svg",
       division: {
-        1: { price: 71.79, name: "IV" },
-        2: { price: 71.79, name: "III" },
-        3: { price: 71.79, name: "II" },
+        1: { price: 71.80, name: "IV" },
+        2: { price: 71.80, name: "III" },
+        3: { price: 71.80, name: "II" },
         4: { price: 36.43, name: "I" },
       },
     },
@@ -113,7 +113,7 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#702523",
       backgroundImage: "/elo-grandmaster.svg",
-      price: 964.29,
+      price: 964.00 ,
     },
   },
   {
@@ -121,7 +121,7 @@ export const Ranks: RankData[] = [
     details: {
       backgroundColor: "#053477",
       backgroundImage: "/elo-challenger.svg",
-      price: 1607.14,
+      price: 1607.00,
     },
   },
 ];
