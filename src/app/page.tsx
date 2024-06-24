@@ -3,6 +3,7 @@
 import GameButton from "@/components/ui/GameButton";
 import { GameCard } from "@/components/ui/GameCard";
 import BenefitsCard from "@/components/ui/benefitsCard";
+import { ReviewCarousel } from "@/components/ui/review-carousel";
 import { ReviewsCard } from "@/components/ui/reviewsCard";
 import { useGame } from "@/hooks/useGameColorContext";
 import Image from "next/image";
@@ -80,9 +81,7 @@ export default function Home() {
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-12 mt-20 px-6 md:px-0">
-            <ReviewsCard rank="4.5" color={game} description="“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”." title="Viezh Robert" />
-            <ReviewsCard rank="4.5" color={game} description="“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”." title="Viezh Robert" />
-            <ReviewsCard rank="4.5" color={game} description="“Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best”." title="Viezh Robert" />
+            <ReviewCarousel />
           </div>
         </section>
     </main>
