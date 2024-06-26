@@ -4,7 +4,6 @@ import GameButton from "@/components/ui/GameButton";
 import { GameCard } from "@/components/ui/GameCard";
 import BenefitsCard from "@/components/ui/benefitsCard";
 import { ReviewCarousel } from "@/components/ui/review-carousel";
-import { ReviewsCard } from "@/components/ui/reviewsCard";
 import { useGame } from "@/hooks/useGameColorContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,7 +50,7 @@ export default function Home() {
           <div className={`flex flex-col md:flex-row items-center gap-10 z-20 mt-6 ${game == "valorant" ? "md:mr-40" : "md:ml-40"}`}>
             <GameCard href={game == "valorant" ? "valorant/elo-boost" : "league-of-legends/elo-boost"} color={game} description="Você irá jogar duo com um jogador profissional, até chegar no elo desejado." icon="/double-up.svg" title="Duo Boost" />
             <GameCard href={game == "valorant" ? "valorant/duo-boost" : "league-of-legends/duo-boost"} color={game} description="Um jogador profissional irá garantir o elo desejado jogando em sua conta." icon="/trophy.svg" title="Elo job" />
-            <GameCard href={game == "valorant" ? "valorant/md5" : "league-of-legends/md5"} color={game} description="Iremos garantir o melhor desempenho possível na sua classificatória." icon="/increase.svg" title="Md5" />
+            <GameCard href={game == "valorant" ? "valorant/md5" : "league-of-legends/md5"} color={game} description="Iremos garantir o melhor desempenho possível na sua classificatória." icon="/increase.svg" title="MD5" underline="MD10"/>
           </div>
         </section>
 
@@ -62,20 +61,29 @@ export default function Home() {
           <div className="w-40 h-40 rounded-full absolute mx-auto bottom-20 -left-20">
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
           </div>
-          <h2 className="text-primary text-4xl md:text-5xl font-extrabold pt-12 z-10">Why choose us</h2>
-          <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg mt-8 z-10">A high-performing web-based car rental system for any rent-a-car company and website</p>
+          <h2 className="text-primary text-4xl md:text-5xl font-extrabold pt-12 z-10">Por que nos escolher?</h2>
+          <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg mt-8 z-10">Oferecemos um sistema de aluguel de carros baseado na web de alto desempenho, ideal para qualquer empresa de locação de veículos e website.</p>
           <div className="flex flex-col md:flex-row w-full items-center justify-center z-10">
             <Image alt="logo" src={game == "valorant" ? "/logo-valorant.svg" : "logo-lol.svg"} width={0} height={0} className="hidden md:block object-cover h-[28rem] w-[28rem] animate-pulse"/>
             <div className="flex flex-col gap-6 mt-12 md:mt-24">
-              <BenefitsCard icon="/phone.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Customer Support" />
-              <BenefitsCard icon="/Location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Best Price Guarantted" />
-              <BenefitsCard icon="/location.svg" color={game} description="Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices." title="Many Location" />
+              <BenefitsCard icon="/phone.svg" color={game} 
+                description="Estamos sempre prontos para ajudar. Nossa equipe de suporte ao cliente está disponível para atender suas necessidades, garantindo uma experiência tranquila e sem complicações. Priorizamos a satisfação do cliente, oferecendo soluções rápidas e eficientes para qualquer problema ou dúvida que possa surgir." 
+                title="Suporte ao Cliente" 
+              />
+              <BenefitsCard icon="/Location.svg" color={game} 
+                description="Oferecemos os melhores preços do mercado. Com nosso compromisso de garantir a melhor tarifa, você pode ter certeza de que está obtendo o máximo valor pelo seu dinheiro. Nossa política de preços transparentes e competitivos assegura que você sempre faça o melhor negócio ao alugar um carro conosco." 
+                title="Garantia do Melhor Preço" 
+              />
+              <BenefitsCard icon="/loc.svg" color={game} 
+                description="Estamos presentes em várias localidades, facilitando o aluguel de um carro onde quer que você esteja. Com uma ampla rede de pontos de atendimento, oferecemos conveniência e flexibilidade para atender suas necessidades de viagem. Não importa o destino, estamos sempre por perto para servir você." 
+                title="Muitas Localizações" 
+              />
             </div>
           </div>
         </section>
 
         <section className="w-full h-full flex flex-col items-center justify-between mt-24 relative">
-          <h2 className="text-primary text-4xl md:text-5xl font-extrabold pt-12 z-10 max-w-xs md:max-w-xl text-center">Trusted by Thousands of Happy Customer</h2>
+          <h2 className="text-primary text-4xl md:text-5xl font-extrabold pt-12 z-10 max-w-xs md:max-w-xl text-center">Confiado por Milhares de Clientes Satisfeitos</h2>
           <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg mt-8 z-10">A high-performing web-based car rental system for any rent-a-car company and website</p>
           <div className="w-40 h-40 rounded-full absolute mx-auto top-24">
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>

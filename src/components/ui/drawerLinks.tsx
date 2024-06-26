@@ -29,7 +29,7 @@ export function DrawerLinks() {
                     <AccordionTrigger className="py-2">League of Legends</AccordionTrigger>
                     <AccordionContent>
                         <Link href="/league-of-legends/elo-boost">
-                            Elo Boost
+                            Elo Job
                         </Link>
                     </AccordionContent>
                     <AccordionContent>
@@ -49,7 +49,7 @@ export function DrawerLinks() {
                     <AccordionTrigger className="py-2">Valorant</AccordionTrigger>
                     <AccordionContent>
                     <Link href="/valorant/elo-boost">
-                        Elo Boost
+                        Elo Job
                     </Link>
                     </AccordionContent>
                     <AccordionContent>

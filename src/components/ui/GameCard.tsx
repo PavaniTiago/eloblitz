@@ -18,9 +18,10 @@ interface GameCardProps {
     icon: StaticImageData | string;
     color: string;
     href: string;
+    underline?: string;
 }
 
-export function GameCard({ description, icon, title, color, href }: GameCardProps) {
+export function GameCard({ description, icon, title, color, href, underline }: GameCardProps) {
   return (
     <Card color={color} className={`w-[300px] h-[440px] relative bg-secondary-foreground border-2 border-secondary-foreground z-20 hover:border-2 ${color == "valorant" ? "hover:border-valorant" : "hover:border-lol"}`}>
       <CardHeader>
@@ -29,7 +30,7 @@ export function GameCard({ description, icon, title, color, href }: GameCardProp
         </div>
       </CardHeader>
       <CardContent className="space-y-4 mx-4">
-        <CardTitle className="text-3xl font-bold text-primary">{title}</CardTitle>
+        <CardTitle className="text-3xl font-bold text-primary uppercase text-center"><del>{underline}</del> {title}</CardTitle>
         <CardDescription className="text-primary-foreground">{description}</CardDescription>
       </CardContent>
       <CardFooter className="absolute bottom-0">

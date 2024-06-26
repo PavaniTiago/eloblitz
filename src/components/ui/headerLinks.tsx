@@ -15,9 +15,17 @@ import {
 } from "@/components/ui/navigation-menu"
 import Image from "next/image"
 
-const components: { title: string; href: string; description: string }[] = [
+function createLinkObject(del: string, title: string) {
+  return (
+    <>
+    <span><del>{del}</del> {title}</span>
+    </>
+  )
+}
+
+const components: { title: any; href: string; description: string }[] = [
   {
-    title: "Elo Boost",
+    title: "Elo Job",
     href: "/valorant/elo-boost",
     description:
       "Evolua Seu rank de forma segura com os melhores players.",
@@ -29,7 +37,7 @@ const components: { title: string; href: string; description: string }[] = [
       "Jogue Duo juntamente com os melhores players.",
   },
   {
-    title: "Md5",
+    title: createLinkObject("MD10", "MD5"),
     href: "/valorant/md5",
     description:
       "Tenha Garantia na sua Md5.",
@@ -44,13 +52,13 @@ export function HeaderLinks() {
           <NavigationMenuTrigger>League of Legends</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col">
             <ul className="gap-3 p-6">
-              <ListItem href="/league-of-legends/elo-boost" title="Elo Boost" className="w-60 hover:bg-secondary-foreground hover:text-primary">
+              <ListItem href="/league-of-legends/elo-boost" title="Elo Job" className="w-60 hover:bg-secondary-foreground hover:text-primary">
                 Evolua Seu rank de forma segura com os melhores players.
               </ListItem>
               <ListItem href="/league-of-legends/duo-boost" title="Duo Boost" className="w-60 hover:bg-secondary-foreground hover:text-primary">
                 Jogue Duo juntamente com os melhores players.
               </ListItem>
-              <ListItem href="/league-of-legends/md5" title="Md5" className="w-60 hover:bg-secondary-foreground hover:text-primary">
+              <ListItem href="/league-of-legends/md5" title={createLinkObject("MD10", "MD5") as any} className="w-60 hover:bg-secondary-foreground hover:text-primary">
                 Tenha Garantia na sua Md5.
               </ListItem>
             </ul>
@@ -81,7 +89,7 @@ export function HeaderLinks() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/contato" legacyBehavior passHref>
+          <Link href="https://discord.gg/DGpYEzHrw4" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <Image alt="discord icon" src="/discord.svg" width={0} height={0} className="w-8 h-8 my-auto"/>
             </NavigationMenuLink>

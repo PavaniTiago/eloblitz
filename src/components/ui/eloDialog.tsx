@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -73,7 +74,9 @@ return (
                 </div>
             )}
             <DialogFooter className="mx-auto">
-                <Button onClick={passData} className="bg-lol text-primary px-20">Selecionar</Button>
+                <DialogClose>
+                    <Button onClick={passData} className="bg-lol text-primary px-20">Selecionar</Button>
+                </DialogClose>
             </DialogFooter>
         </DialogContent>
     </Dialog>

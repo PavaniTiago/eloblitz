@@ -115,12 +115,12 @@ export function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialo
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start text-center md:text-start justify-center px-8 md:px-0 md:justify-start border-t border-primary-foreground mt-20">
-                <h2 className="text-primary text-4xl md:text-5xl pt-12 font-extrabold z-10">SOBRE ELO BOOST</h2>
+                <h2 className="text-primary text-4xl md:text-5xl pt-12 font-extrabold z-10">SOBRE ELO JOB</h2>
                 <p className="text-primary-foreground text-md max-w-xl mt-6 z-10">
-                    Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo boost (Elo Job) é o serviço ideal para você.
+                    Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo job é o serviço ideal para você.
                 </p>
                 <p className="text-primary-foreground text-md max-w-xl mt-6 z-10">
-                    Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo boost (Elo Job) é o serviço ideal para você.
+                    Quer subir de ELO, garantir recompensas, economizar tempo ou elevar o nível dos seus adversários e colegas de equipe? Elo job é o serviço ideal para você.
                     Nós jogaremos para você até atingir o ELO desejado. Você poderá observar como nos comportamos em partidas ranqueadas, entender as táticas e estratégias utilizadas para subir de ELO, além de receber dicas para melhorar sua performance in-game e evoluir sozinho.
                 </p>
                 <p className="text-primary-foreground text-md max-w-xl mt-6 z-10">
