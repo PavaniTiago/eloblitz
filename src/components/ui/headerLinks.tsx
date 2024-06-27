@@ -37,7 +37,7 @@ const components: { title: any; href: string; description: string }[] = [
       "Jogue Duo juntamente com os melhores players.",
   },
   {
-    title: createLinkObject("MD10", "MD5"),
+    title: "Md5",
     href: "/valorant/md5",
     description:
       "Tenha Garantia na sua Md5.",

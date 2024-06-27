@@ -29,7 +29,7 @@ export function Footer(){
                     <h3 className="font-semibold text-sm md:text-xl text-primary">Valorant</h3>
                     <Link href="/valorant/elo-boost" className="text-primary-foreground text-xs md:text-base hover:text-valorant transition-all">Elo Job</Link>
                     <Link href="/valorant/duo-boost" className="text-primary-foreground text-xs md:text-base hover:text-valorant transition-all">Duo Boost</Link>
-                    <Link href="/valorant/md5" className="text-primary-foreground text-xs md:text-base hover:text-valorant transition-all"><del>MD10</del> MD5</Link>
+                    <Link href="/valorant/md5" className="text-primary-foreground text-xs md:text-base hover:text-valorant transition-all">MD5</Link>
                 </div>
             </div>
             <span className="text-sm font-medium text-primary">©2024 EloBlitz. All rights reserved</span>
