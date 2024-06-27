@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { DesireblaCard } from "@/components/ui/desirableCard";
 import { Ranks } from "@/lib/elo-boost/ranks";
 import { DivisionDetails, RankDetails } from "@/types/rank-interface";
+import Link from "next/link";
 import { useState } from "react";
 
 interface EloDialogProps {
@@ -111,7 +112,7 @@ export function EloBoost({ onActualRankSelect, onDesirebleRankSelect }: EloDialo
                             <p className="text-primary text-2xl font-semibold text-center z-10">Selecione um elo maior para contratar o serviço</p>
                         )}
                     </div>
-                    <Button className="bg-lol self-center md:self-start text-md md:text-xl text-primary px-12 max-w-xl md:max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : `Contratar (R$ ${totalPriceWithDiscount.toFixed(2)})`}`}</Button>
+                    <Link href={`https://api.whatsapp.com/send?phone=12982175403&text=Olá quero contratar o serviço Elo job league of legends da Eloblitz. ${actualRank && desirableRank ? `${actualRank.rankName} ${actualRank.division?.name || ""} AO ${desirableRank.rankName} ${desirableRank.division?.name || ""} no valor de ${totalPriceWithDiscount.toFixed(2)}` : ""}`}><Button className="bg-valorant self-center md:self-start text-md md:text-xl text-primary px-12 max-w-xl md:max-w-sm py-7 mt-6 rounded-xl font-semibold z-10" disabled={!isRankValid()}>{`${!isRankValid() ? "Selecione um elo maior" : `Contratar (R$ ${totalPriceWithDiscount.toFixed(2)})`}`}</Button></Link>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start text-center md:text-start justify-center px-8 md:px-0 md:justify-start border-t border-primary-foreground mt-20">

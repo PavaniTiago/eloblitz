@@ -6,6 +6,7 @@ import { Md5Card } from "@/components/ui/md5Card";
 import { RanksDuo } from "@/lib/md5/duo-md5/ranksValorant";
 import { Ranks } from "@/lib/md5/ranksValorant";
 import { RankDetails } from "@/types/rank-interface";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface EloDialogProps {
@@ -92,9 +93,11 @@ export function Md5({ onActualRankSelect, onSelectCount, onSwitch }: EloDialogPr
                         <del className="text-primary-foreground text-lg font-semibold text-center max-w-l z-10">R$ {totalPrice.toFixed(2)}</del>
                         <span className="border-valorant border rounded-full text-valorant text-sm p-1.5 px-2">30% off</span>
                     </div>
-                    <Button className="bg-valorant self-center md:self-start text-md md:text-xl text-primary px-12 max-w-xl md:max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">
-                        Contratar (R$ {totalPriceWithDiscount.toFixed(2)})
-                    </Button>
+                    <Link href={`https://api.whatsapp.com/send?phone=12982175403&text=Olá quero contratar o serviço Md5 ${duoBoost ? "Duo Boost": ""} valorant da Eloblitz. ${actualRank ? `${actualRank.rankName} ${actualRank.division ? actualRank.division.name : ""} no valor de ${totalPriceWithDiscount.toFixed(2)}` : ""}`}>
+                        <Button className="bg-valorant self-center md:self-start text-md md:text-xl text-primary px-12 max-w-xl md:max-w-sm py-7 mt-6 rounded-xl font-semibold z-10">
+                            Contratar (R$ {totalPriceWithDiscount.toFixed(2)})
+                        </Button>
+                    </Link>
                 </div>
             </section>
             <section className="flex flex-col w-full max-w-7xl items-start text-center md:text-start justify-center px-8 md:px-0 md:justify-start border-t border-primary-foreground mt-20">
