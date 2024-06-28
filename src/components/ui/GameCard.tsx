@@ -31,7 +31,7 @@ export function GameCard({ description, icon, title, color, href, underline }: G
       </CardHeader>
       <CardContent className="space-y-4 mx-4">
         <CardTitle className="text-3xl font-bold text-primary uppercase text-center"><del>{underline}</del> {title}</CardTitle>
-        <CardDescription className="text-primary-foreground">{description}</CardDescription>
+        <CardDescription className="text-primary-foreground text-center">{description}</CardDescription>
       </CardContent>
       <CardFooter className="absolute bottom-0">
         <Link href={href}><Button className={`${color == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"} transition-all text-md hover:bg font-normal text-primary w-64 py-6`}>Adquirir</Button></Link>

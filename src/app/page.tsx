@@ -26,8 +26,8 @@ export default function Home() {
       )} 
       <section className="h-screen flex flex-col items-center justify-center absolute z-20">
         <h1 className="md:text-7xl text-5xl font-extrabold"><span className={`${game == "valorant" ? "text-valorant" : "text-lol"}`}>ELO</span>BLITZ</h1>
-        <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg pt-8">Domine seu jogo com nossa equipe especializada em Elojob. Alcance o topo com segurança e rapidez.</p>
-        <Link href="#services"><button className={`text-md md:text-lg text-primary px-8 py-3 md:px-10 md:py-4 mt-6 md:mt-12 rounded-lg font-semibold transition-all ${game == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"}`}>Encontre seu Booster!</button></Link>
+        <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg pt-8">A força que você precisa para <br /> alcançar novos patamares.</p>
+        <Link href="#services"><button className={`text-md md:text-lg text-primary px-8 py-3 md:px-10 md:py-4 mt-6 md:mt-12 rounded-lg font-semibold transition-all ${game == "valorant" ? "bg-valorant hover:bg-valorant/80" : "bg-lol hover:bg-lol/80"}`}>Comece agora!</button></Link>
       </section>
         <section id="services" className="h-full flex flex-col items-center justify-center mt-12 relative">
           <div className="w-80 h-40 rounded-full absolute mx-auto top-0">
@@ -48,9 +48,9 @@ export default function Home() {
             )}
           </div>
           <div className={`flex flex-col md:flex-row items-center gap-10 z-20 mt-6 ${game == "valorant" ? "md:mr-40" : "md:ml-40"}`}>
-            <GameCard href={game == "valorant" ? "valorant/elo-boost" : "league-of-legends/elo-boost"} color={game} description="Você irá jogar duo com um jogador profissional, até chegar no elo desejado." icon="/double-up.svg" title="Duo Boost" />
-            <GameCard href={game == "valorant" ? "valorant/duo-boost" : "league-of-legends/duo-boost"} color={game} description="Um jogador profissional irá garantir o elo desejado jogando em sua conta." icon="/trophy.svg" title="Elo job" />
-            <GameCard href={game == "valorant" ? "valorant/md5" : "league-of-legends/md5"} color={game} description="Iremos garantir o melhor desempenho possível na sua classificatória." icon="/increase.svg" title="MD5" underline="MD10"/>
+            <GameCard href={game == "valorant" ? "valorant/elo-boost" : "league-of-legends/duo-boost"} color={game} description="Jogue ao lado de nossos Boosters profissionais e aprenda estratégias enquanto sobe de ELO. Garantimos uma experiência ainda mais segura e personalizada, adaptada ao seu estilo de jogo." icon="/double-up.svg" title="Duo Boost" />
+            <GameCard href={game == "valorant" ? "valorant/duo-boost" : "league-of-legends/elo-boost"} color={game} description="Deixe que nossos especialistas aumentem seu ELO rapidamente. Prometemos discrição total e um serviço eficiente e seguro para atingir suas metas." icon="/trophy.svg" title="Elo job" />
+            <GameCard href={game == "valorant" ? "valorant/md5" : "league-of-legends/md5"} color={game} description="Precisa vencer suas partidas da MD5? Selecionamos os melhores Boosters para garantir um desempenho excelente em suas partidas de classificação, ajudando você a começar a temporada com o pé direito." icon="/increase.svg" title="MD5" underline={game == "valorant" ? "" : "MD10"}/>
           </div>
         </section>
 
@@ -62,21 +62,21 @@ export default function Home() {
             <div className={`w-full h-full ${game == "valorant" ? "bg-valorant" : "bg-lol"} blur-[10rem]`}></div>
           </div>
           <h2 className="text-primary text-4xl md:text-5xl font-extrabold pt-12 z-10">Por que nos escolher?</h2>
-          <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg mt-8 z-10">Oferecemos um sistema de aluguel de carros baseado na web de alto desempenho, ideal para qualquer empresa de locação de veículos e website.</p>
+          <p className="text-primary-foreground text-md text-center max-w-xs md:max-w-lg mt-8 z-10">Nossa prioridade número 1 sempre será o cliente. Com anos de experiência, oferecemos os melhores serviços de boost, garantindo que suas necessidades sejam atendidas de forma rápida, profissional e segura, com o melhor preço do mercado!</p>
           <div className="flex flex-col md:flex-row w-full items-center justify-center z-10">
             <Image alt="logo" src={game == "valorant" ? "/logo-valorant.svg" : "logo-lol.svg"} width={0} height={0} className="hidden md:block object-cover h-[28rem] w-[28rem] animate-pulse"/>
             <div className="flex flex-col gap-6 mt-12 md:mt-24">
               <BenefitsCard icon="/phone.svg" color={game} 
-                description="Estamos sempre prontos para ajudar. Nossa equipe de suporte ao cliente está disponível para atender suas necessidades, garantindo uma experiência tranquila e sem complicações. Priorizamos a satisfação do cliente, oferecendo soluções rápidas e eficientes para qualquer problema ou dúvida que possa surgir." 
+                description="Estamos sempre disponíveis para ajudar, resolver dúvidas e garantir sua satisfação em cada interação. Conte conosco para uma experiência de atendimento ao cliente excepcional." 
                 title="Suporte ao Cliente" 
               />
               <BenefitsCard icon="/Location.svg" color={game} 
-                description="Oferecemos os melhores preços do mercado. Com nosso compromisso de garantir a melhor tarifa, você pode ter certeza de que está obtendo o máximo valor pelo seu dinheiro. Nossa política de preços transparentes e competitivos assegura que você sempre faça o melhor negócio ao alugar um carro conosco." 
+                description="A ELOBLITZ possui os melhores valores do mercado. Para indicações, oferecemos descontos especiais para você e seu amigo." 
                 title="Garantia do Melhor Preço" 
               />
               <BenefitsCard icon="/loc.svg" color={game} 
-                description="Estamos presentes em várias localidades, facilitando o aluguel de um carro onde quer que você esteja. Com uma ampla rede de pontos de atendimento, oferecemos conveniência e flexibilidade para atender suas necessidades de viagem. Não importa o destino, estamos sempre por perto para servir você." 
-                title="Muitas Localizações" 
+                description="Possuímos os melhores jogadores! Nossa equipe é composta somente por jogadores mestres, grão-mestres e desafiantes." 
+                title="Booster Qualificados" 
               />
             </div>
           </div>
